@@ -28,7 +28,7 @@
     [PendingOperations.shareManager.requestQueue addObserver:self forKeyPath:@"operationCount" options:0 context:nil];
 }
 
-int i = 1;
+int i = 0;
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if (i % 2 == 0) {
         [self addRequests];
@@ -43,7 +43,7 @@ int i = 1;
             NSLog(@"5--> %@",result);
         }];
     }
-    //i++;
+    i++;
     
 }
 
@@ -123,6 +123,8 @@ int i = 1;
                 //NSLog(@"%d===",__LINE__);
             });
         }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 
